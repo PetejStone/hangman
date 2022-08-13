@@ -12,12 +12,17 @@ let word = randomWords()
 
 class Home extends Component {
   
-    handleClick() {
-        console.log('Click happened');
+     handleKeyPress(e) {
+        console.log('Click happened', e.key);
+        if (word.includes(e.key)) {
+            console.log('true')
+        } else {
+            console.log('false')
+        }
       }
 
     newWord() {
-        console.log(word, 'was too short')
+        
         word = randomWords();
         
 
@@ -29,9 +34,9 @@ class Home extends Component {
     }
 
     render() {
-        console.log('word is', word)
+      
         if (word.length < 5) this.newWord()
-        console.log('word is now', word)
+    
         let blank = word.split('')
 
         for (let i = 0; i < blank.length; i++) {
@@ -41,6 +46,7 @@ class Home extends Component {
             <div>
                 
                 <p>{blank}</p>
+                <input type="text" onKeyPress={(e) => this.handleKeyPress(e)} />
             </div>
             
         )
