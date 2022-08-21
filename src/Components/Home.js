@@ -10,7 +10,7 @@ const Home = () =>  {
     const [blank,setBlank] = useState([]);
     const[originalWord,setOriginalWord] = useState([]);
     const [lives, setLives] = useState(5)
-
+    const [guess, setGuess]= useState('')
    const handleKeyPress = e => {
        
            
@@ -19,10 +19,12 @@ const Home = () =>  {
         // } else {
         //     console.log('false');
         // }
-
+        let letter = e.target.value;
+        console.log('letter',e.target.value)
+        setGuess(letter);
         for (let i = 0; i < originalWord.length; i++) {
             
-            if (!word.includes(e.key)) {
+            if (!word.includes(e.target.value)) {
                 console.log('wrong');
                 let wrong = lives - 1;
                 if (lives <= 1) {
@@ -31,8 +33,8 @@ const Home = () =>  {
                 }
                setLives(wrong)
             }
-            if (originalWord[i] === e.key)  {
-                blank[i] = e.key;
+            if (originalWord[i] === e.target.value)  {
+                blank[i] = e.target.value;
                 console.log(blank)
                 let update = [...blank]
                 setBlank(update)
@@ -41,6 +43,7 @@ const Home = () =>  {
 
             
         }
+        setGuess('')
    }
  
 
@@ -85,7 +88,8 @@ const Home = () =>  {
         useEffect(() => {
             setBlank(newBlank);
             setOriginalWord(oldWord);
-            setLives(lives)
+            setLives(lives);
+            setGuess(guess)
             
           },[]);
        console.log(word)
@@ -96,7 +100,12 @@ const Home = () =>  {
             <div>
                 
                <p>{blank}</p>
-                <input type="text" onKeyPress={(e) => handleKeyPress(e)} />
+                <input t
+                ype="text" 
+                onChange={(e) => handleKeyPress(e)} 
+                value = {guess}
+                
+                />
             </div>
             
         )
