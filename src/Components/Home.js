@@ -7,12 +7,11 @@ let word = randomWords()
 
 const Home = () =>  {
     // const [word, setWord] = useState("");
-    
+    const [blank,setBlank] = useState([]);
     // useEffect(()=> {
-    //     word = randomWords();
-    //     setWord([...word])
+    //     setBlank([])
        
-    // },word);
+    // },setBlank);
     
 
    const handleKeyPress = e => {
@@ -25,20 +24,12 @@ const Home = () =>  {
             console.log('false');
         }
    }
-    //   handleKeyPress() =>  {
+ 
 
-    //     console.log('Click happened', e.key);
-    //     if (word.includes(e.key)) {
-    //         console.log('true');
-    //     } else {
-    //         console.log('false');
-    //     }
-    //   }};
-
-    const newWord = () => {
+    const newWord = e => {
         
         word = randomWords();
-        
+        console.log('word is now',word)
 
         if (word.length < 5) {
             this.newWord()
@@ -47,19 +38,35 @@ const Home = () =>  {
         }
     }
 
+    // const splitWord = e => {
+        
+    //     let newBlank = word.split('')
+
+    //     // for (let i = 0; i < newBlank.length; i++) {
+    //     //     newBlank[i] = '_ '
+    //     //     return setBlank([newBlank])
+    //     // }
+
+    //     // console.log(blank)
+    //     console.log(newBlank)
+    //     // setBlank(newBlank)
+    // }
     
     
    
       
-        if (word.length < 5) this.newWord()
-    
-        let blank = word.split('')
+        if (word.length < 5) newWord();
+              let newBlank = word.split('')
 
-        for (let i = 0; i < blank.length; i++) {
-            blank[i] = '_ '
-        }
-
-        console.log(blank)
+              console.log('blank is',blank)
+        for (let i = 0; i < newBlank.length; i++) {
+            newBlank[i] = '_ '
+            // setBlank([newBlank])
+        };
+        useEffect(() => {
+            setBlank(newBlank)
+          },[]);
+       console.log('blank isn now', blank)
         return  (
             <div>
                 
