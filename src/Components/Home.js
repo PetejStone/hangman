@@ -4,24 +4,38 @@ var randomWords = require('random-words');
 
 let word = randomWords()
 
-// let blank = word.split('')
 
-// for (let i = 0; i < blank.length; i++) {
-//     blank[i] = '_ '
-// }
+const Home = () =>  {
+    // const [word, setWord] = useState("");
+    
+    // useEffect(()=> {
+    //     word = randomWords();
+    //     setWord([...word])
+       
+    // },word);
+    
 
-class Home extends Component {
-  
-     handleKeyPress(e) {
-        console.log('Click happened', e.key);
+   const handleKeyPress = e => {
+        console.log('hello');
+             console.log('Click happened', e.key);
+           
         if (word.includes(e.key)) {
-            console.log('true')
+            console.log('true');
         } else {
-            console.log('false')
+            console.log('false');
         }
-      }
+   }
+    //   handleKeyPress() =>  {
 
-    newWord() {
+    //     console.log('Click happened', e.key);
+    //     if (word.includes(e.key)) {
+    //         console.log('true');
+    //     } else {
+    //         console.log('false');
+    //     }
+    //   }};
+
+    const newWord = () => {
         
         word = randomWords();
         
@@ -33,7 +47,9 @@ class Home extends Component {
         }
     }
 
-    render() {
+    
+    
+   
       
         if (word.length < 5) this.newWord()
     
@@ -42,16 +58,18 @@ class Home extends Component {
         for (let i = 0; i < blank.length; i++) {
             blank[i] = '_ '
         }
+
+        console.log(blank)
         return  (
             <div>
                 
-                <p>{blank}</p>
-                <input type="text" onKeyPress={(e) => this.handleKeyPress(e)} />
+               <p>{blank}</p>
+                <input type="text" onKeyPress={(e) => handleKeyPress(e)} />
             </div>
             
         )
       }
     
-}
+
 
 export default Home
