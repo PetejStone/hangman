@@ -8,20 +8,26 @@ let word = randomWords()
 const Home = () =>  {
     // const [word, setWord] = useState("");
     const [blank,setBlank] = useState([]);
-    // useEffect(()=> {
-    //     setBlank([])
-       
-    // },setBlank);
+    const[originalWord,setOriginalWord] = useState([]);
     
 
    const handleKeyPress = e => {
-        console.log('hello');
-             console.log('Click happened', e.key);
+       
            
-        if (word.includes(e.key)) {
-            console.log('true');
-        } else {
-            console.log('false');
+        // if (word.includes(e.key)) {
+        //     console.log('true');
+        // } else {
+        //     console.log('false');
+        // }
+
+        for (let i = 0; i < originalWord.length; i++) {
+            if (originalWord[i] === e.key)  {
+                blank[i] = e.key;
+                console.log(blank)
+                let update = [...blank]
+                setBlank(update)
+                console.log('blank is now', blank)
+            }
         }
    }
  
@@ -29,7 +35,7 @@ const Home = () =>  {
     const newWord = e => {
         
         word = randomWords();
-        console.log('word is now',word)
+        
 
         if (word.length < 5) {
             this.newWord()
@@ -57,17 +63,22 @@ const Home = () =>  {
       
         if (word.length < 5) newWord();
               let newBlank = word.split('')
-
-              console.log('blank is',blank)
+              let oldWord = word.split('')
+             
         for (let i = 0; i < newBlank.length; i++) {
             newBlank[i] = '_ '
             // setBlank([newBlank])
         };
+
         useEffect(() => {
-            setBlank(newBlank)
+            setBlank(newBlank);
+            setOriginalWord(oldWord);
+            
           },[]);
-       console.log('blank isn now', blank)
+       console.log(word)
+       console.log('UE - blank is now', blank)
         return  (
+           
             <div>
                 
                <p>{blank}</p>
