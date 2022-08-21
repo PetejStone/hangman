@@ -9,7 +9,7 @@ const Home = () =>  {
     // const [word, setWord] = useState("");
     const [blank,setBlank] = useState([]);
     const[originalWord,setOriginalWord] = useState([]);
-    
+    const [lives, setLives] = useState(5)
 
    const handleKeyPress = e => {
        
@@ -21,24 +21,36 @@ const Home = () =>  {
         // }
 
         for (let i = 0; i < originalWord.length; i++) {
+            
+            if (!word.includes(e.key)) {
+                console.log('wrong');
+                let wrong = lives - 1;
+                if (lives <= 1) {
+                    console.log('YOU LOST')
+                    return alert('you lost')
+                }
+               setLives(wrong)
+            }
             if (originalWord[i] === e.key)  {
                 blank[i] = e.key;
                 console.log(blank)
                 let update = [...blank]
                 setBlank(update)
                 console.log('blank is now', blank)
-            }
+            } 
+
+            
         }
    }
  
 
     const newWord = e => {
-        
+        console.log('word not long enough', word)
         word = randomWords();
         
 
         if (word.length < 5) {
-            this.newWord()
+            newWord()
         } else {
             return word
         }
@@ -73,10 +85,12 @@ const Home = () =>  {
         useEffect(() => {
             setBlank(newBlank);
             setOriginalWord(oldWord);
+            setLives(lives)
             
           },[]);
        console.log(word)
        console.log('UE - blank is now', blank)
+       console.log('lives are', lives)
         return  (
            
             <div>
