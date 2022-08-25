@@ -18,8 +18,7 @@
       transform: translate(0px, 0px) rotate(20deg);
     }
     100% {
-      transform: translate(-30px, -5px)
-        rotate(20deg);;
+      transform: translate(-34px, -5px) rotate(20deg);
     }
   }
   
@@ -29,7 +28,7 @@
         rotate(-12deg);;
     }
     100% {
-      transform: translate(-10px, -5px)
+      transform: translate(-6px, -5px)
         rotate(-12deg);;
     }
   }

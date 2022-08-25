@@ -38,7 +38,7 @@ const Home = () =>  {
             }
           }
           let updateGuessed = [...lettersGuessed];
-          updateGuessed.push(e.target.value);
+          if (!word.includes(e.target.value)) updateGuessed.push(e.target.value);
           setLettersGuessed(updateGuessed)
           
           
@@ -167,9 +167,9 @@ const Home = () =>  {
     <div class="leftarm"></div>
     <div class="rightarm"></div>
     <div class="leftleg"></div>
-    <div class="leftfoot"></div>
+   
     <div class="rightleg"></div>
-    <div class="rightfoot"></div>
+
     <div class="barone"></div>
     <div class="bartwo"></div>
     <div class="barthree"></div>
