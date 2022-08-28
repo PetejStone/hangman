@@ -11,7 +11,7 @@ function App() {
 
         <header className="App-header">
         
-          <h1>Hello Ashley Stone</h1>
+          <h1>Hello! Welcome to Hangman!</h1>
          <Home />
         
          <Routes>
