@@ -18,41 +18,7 @@ const Home = () =>  {
     const handleKeyPress = e => {
        
            
-        if (word.includes(e.target.value)) {
-            console.log('true');
-        } else {
-            console.log('zoom in body part', lives);
-
-            if (lives === 7) {
-                let rope = document.querySelector('.ropeParent')
-                rope.classList.add('zoom')
-            } else if (lives === 6) {
-                let head = document.querySelector('.headParent')
-                head.classList.add('zoom')
-            } else if (lives === 5) {
-                let torso = document.querySelector('.torsoParent')
-                torso.classList.add('zoom')
-            } else if (lives === 4) {
-                let rightarm = document.querySelector('.rightarmParent')
-                rightarm.classList.add('zoom')
-            } else if (lives === 3) {
-                let leftarm = document.querySelector('.leftarmParent')
-                leftarm.classList.add('zoom')
-            } else if (lives === 2) {
-                let rightleg = document.querySelector('.rightlegParent')
-                rightleg.classList.add('zoom')
-            } else if (lives === 1) {
-                let leftleg = document.querySelector('.leftlegParent')
-                leftleg.classList.add('zoom')
-            }
-            
-
-            // setTimeout(()=> {
-            //     // console.log('timeout',head)
-            //    let head = document.querySelector('.headParent')
-            //     head.classList.remove('zoom')
-            // },1000)
-        }
+        
 
         // Set input to the letter pressed
         let letter = e.target.value;
@@ -81,15 +47,15 @@ const Home = () =>  {
             if (!word.includes(e.target.value)) {
                //decrease guesses by one
                 
-                let wrong = lives - 1;
+            //     let wrong = lives - 1;
                 
               
-                //If lives are less than or equal to one, alert they lost
-                if (lives <= 1) {
-                    console.log('YOU LOST')
-                    return alert(`You Lost, the word was "${word}" `)
-                }
-               setLives(wrong)
+            //     //If lives are less than or equal to one, alert they lost
+            //     if (lives <= 1) {
+            //         console.log('YOU LOST')
+            //         return alert(`You Lost, the word was "${word}" `)
+            //     }
+            //    setLives(wrong)
             }
 
             //if letter exists, show on front end
@@ -116,6 +82,55 @@ const Home = () =>  {
         }
         //reset guess to blank
         setGuess('')
+
+        if (word.includes(e.target.value)) {
+            console.log('true');
+        } else {
+            console.log('zoom in body part', lives);
+
+            if (lives === 7) {
+                let rope = document.querySelector('.ropeParent')
+                rope.classList.add('zoom')
+            } else if (lives === 6) {
+                let head = document.querySelector('.headParent')
+                head.classList.add('zoom')
+            } else if (lives === 5) {
+                let torso = document.querySelector('.torsoParent')
+                torso.classList.add('zoom')
+            } else if (lives === 4) {
+                let rightarm = document.querySelector('.rightarmParent')
+                rightarm.classList.add('zoom')
+            } else if (lives === 3) {
+                let leftarm = document.querySelector('.leftarmParent')
+                leftarm.classList.add('zoom')
+            } else if (lives === 2) {
+                let rightleg = document.querySelector('.rightlegParent')
+                rightleg.classList.add('zoom')
+            } else if (lives === 1) {
+                let leftleg = document.querySelector('.leftlegParent')
+                leftleg.classList.add('zoom')
+            }
+
+            let wrong = lives - 1;
+                
+              
+            //If lives are less than or equal to one, alert they lost
+            if (lives <= 1) {
+                console.log('YOU LOST')
+                setTimeout(() => {
+                    alert(`You Lost, the word was "${word}" `)
+                },2000)
+                
+            }
+           setLives(wrong)
+            
+
+            // setTimeout(()=> {
+            //     // console.log('timeout',head)
+            //    let head = document.querySelector('.headParent')
+            //     head.classList.remove('zoom')
+            // },1000)
+        }
         
    }
  
