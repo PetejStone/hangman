@@ -10,7 +10,7 @@ const Home = () =>  {
     // const [word, setWord] = useState("");
     const [blank,setBlank] = useState([]);
     const[originalWord,setOriginalWord] = useState([]);
-    const [lives, setLives] = useState(10);
+    const [lives, setLives] = useState(7);
     const [guess, setGuess]= useState('');
     const [lettersGuessed, setLettersGuessed] = useState([]);
     const [correct, setCorrect] = useState(0)
@@ -18,11 +18,41 @@ const Home = () =>  {
     const handleKeyPress = e => {
        
            
-        // if (word.includes(e.key)) {
-        //     console.log('true');
-        // } else {
-        //     console.log('false');
-        // }
+        if (word.includes(e.target.value)) {
+            console.log('true');
+        } else {
+            console.log('zoom in body part', lives);
+
+            if (lives === 7) {
+                let rope = document.querySelector('.ropeParent')
+                rope.classList.add('zoom')
+            } else if (lives === 6) {
+                let head = document.querySelector('.headParent')
+                head.classList.add('zoom')
+            } else if (lives === 5) {
+                let torso = document.querySelector('.torsoParent')
+                torso.classList.add('zoom')
+            } else if (lives === 4) {
+                let rightarm = document.querySelector('.rightarmParent')
+                rightarm.classList.add('zoom')
+            } else if (lives === 3) {
+                let leftarm = document.querySelector('.leftarmParent')
+                leftarm.classList.add('zoom')
+            } else if (lives === 2) {
+                let rightleg = document.querySelector('.rightlegParent')
+                rightleg.classList.add('zoom')
+            } else if (lives === 1) {
+                let leftleg = document.querySelector('.leftlegParent')
+                leftleg.classList.add('zoom')
+            }
+            
+
+            // setTimeout(()=> {
+            //     // console.log('timeout',head)
+            //    let head = document.querySelector('.headParent')
+            //     head.classList.remove('zoom')
+            // },1000)
+        }
 
         // Set input to the letter pressed
         let letter = e.target.value;
@@ -48,10 +78,9 @@ const Home = () =>  {
         for (let i = 0; i < originalWord.length; i++) {
              
            
-
             if (!word.includes(e.target.value)) {
                //decrease guesses by one
-                console.log('wrong');
+                
                 let wrong = lives - 1;
                 
               
@@ -162,18 +191,18 @@ const Home = () =>  {
                   <body>
 
 <div class="wrapper">
-    <div class="head"></div>
-    <div class="torso"></div>
-    <div class="leftarm"></div>
-    <div class="rightarm"></div>
-    <div class="leftleg"></div>
+    <div className="headParent"><div class="head"></div></div>
+    <div className="torsoParent"><div className="torso"></div></div>
+    <div className="leftarmParent"><div className="leftarm"></div></div>
+    <div className="rightarmParent"><div className="rightarm"></div></div>
+    <div className="leftlegParent"> <div className="leftleg"></div></div>
    
-    <div class="rightleg"></div>
+    <div className="rightlegParent"> <div className="rightleg"></div></div>
 
-    <div class="barone"></div>
-    <div class="bartwo"></div>
-    <div class="barthree"></div>
-    <div class="rope"></div>
+    <div className="barone"></div>
+    <div className="bartwo"></div>
+    <div className="barthree"></div>
+    <div className="ropeParent"><div className="rope"></div></div>
 </div>
 
 
