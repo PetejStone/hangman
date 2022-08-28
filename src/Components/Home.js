@@ -15,6 +15,11 @@ const Home = () =>  {
     const [lettersGuessed, setLettersGuessed] = useState([]);
     const [correct, setCorrect] = useState(0)
   
+
+    const closePopup = () => {
+        console.log('hello')
+        document.querySelector('.wrapperParent').classList.remove('active')
+    }
     const handleKeyPress = e => {
        
            
@@ -87,6 +92,8 @@ const Home = () =>  {
             console.log('true');
         } else {
             console.log('zoom in body part', lives);
+            let wrapperParent = document.querySelector('.wrapperParent')
+            wrapperParent.classList.add('active')
 
             if (lives === 7) {
                 let rope = document.querySelector('.ropeParent')
@@ -204,21 +211,23 @@ const Home = () =>  {
                     return (<li>{letter}, </li>)
                   })}</ul>
                   <body>
+                <div className="wrapperParent">
+                    <div class="wrapper">
+                        <div className="headParent"><div class="head"></div></div>
+                        <div className="torsoParent"><div className="torso"></div></div>
+                        <div className="leftarmParent"><div className="leftarm"></div></div>
+                        <div className="rightarmParent"><div className="rightarm"></div></div>
+                        <div className="leftlegParent"> <div className="leftleg"></div></div>
+                    
+                        <div className="rightlegParent"> <div className="rightleg"></div></div>
 
-<div class="wrapper">
-    <div className="headParent"><div class="head"></div></div>
-    <div className="torsoParent"><div className="torso"></div></div>
-    <div className="leftarmParent"><div className="leftarm"></div></div>
-    <div className="rightarmParent"><div className="rightarm"></div></div>
-    <div className="leftlegParent"> <div className="leftleg"></div></div>
-   
-    <div className="rightlegParent"> <div className="rightleg"></div></div>
-
-    <div className="barone"></div>
-    <div className="bartwo"></div>
-    <div className="barthree"></div>
-    <div className="ropeParent"><div className="rope"></div></div>
-</div>
+                        <div className="barone"></div>
+                        <div className="bartwo"></div>
+                        <div className="barthree"></div>
+                        <div className="ropeParent"><div className="rope"></div></div>
+                     </div>
+                     <button id="Continue" onClick={(() => closePopup())}>Guess Again</button>
+                </div>
 
 
     
