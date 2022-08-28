@@ -26,20 +26,20 @@ const Home = () =>  {
         
 
         // Set input to the letter pressed
-        let letter = e.target.value;
+        let letter = e.target.value.toLowerCase();
         console.log('letter',e.target.value)
         setGuess(letter);
 
           //add guessed letter to guessedLetters Array
           for (let i=0; i < lettersGuessed.length; i++) {
-            if (e.target.value === lettersGuessed[i]) {
+            if (e.target.value.toLowerCase() === lettersGuessed[i]) {
                 alert( `You've already guessed that letter, pick another one!` );
                 setGuess('')
                 return
             }
           }
           let updateGuessed = [...lettersGuessed];
-          if (!word.includes(e.target.value)) updateGuessed.push(e.target.value);
+          if (!word.includes(e.target.value.toLowerCase())) updateGuessed.push(e.target.value.toLowerCase());
           setLettersGuessed(updateGuessed)
           
           
@@ -49,7 +49,7 @@ const Home = () =>  {
         for (let i = 0; i < originalWord.length; i++) {
              
            
-            if (!word.includes(e.target.value)) {
+            if (!word.includes(e.target.value.toLowerCase())) {
                //decrease guesses by one
                 
             //     let wrong = lives - 1;
@@ -64,8 +64,8 @@ const Home = () =>  {
             }
 
             //if letter exists, show on front end
-            if (originalWord[i] === e.target.value)  {
-                blank[i] = e.target.value;
+            if (originalWord[i] === e.target.value.toLowerCase())  {
+                blank[i] = e.target.value.toLowerCase();
             
                 let update = [...blank];
                 setBlank(update);
@@ -88,7 +88,7 @@ const Home = () =>  {
         //reset guess to blank
         setGuess('')
 
-        if (word.includes(e.target.value)) {
+        if (word.includes(e.target.value.toLowerCase())) {
             console.log('true');
         } else {
             console.log('zoom in body part', lives);
