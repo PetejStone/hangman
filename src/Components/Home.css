@@ -87,6 +87,12 @@
     transform: translate(-50%, -50%);
   }
 
+  @media screen and (max-width: 500px) {
+    .wrapper {
+        transform: translate(-65%, -50%) scale(.5);
+    }
+  }
+
   .wrapperParent {
     position: absolute;
     left: 50%;
