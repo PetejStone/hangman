@@ -207,7 +207,7 @@ const Home = () =>  {
                 <p>Guesses Left: {lives}</p>
                 <p>Letters Guessed</p>
                 
-                <ul> {lettersGuessed.map(function(letter){
+                <ul className="list"> {lettersGuessed.map(function(letter){
                     return (<li>{letter}, </li>)
                   })}</ul>
                   <body>

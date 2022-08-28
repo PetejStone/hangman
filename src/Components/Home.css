@@ -348,8 +348,26 @@
     position: absolute;
     bottom: 1rem;
     left: 40%;
-
+    cursor: pointer;
     padding: 1rem;
-    background-color: green;
+    background-color: #7FFF00;
     color: #fff;
+    font-weight: 600;
+    font-size: 2rem
+  }
+
+
+  .list {
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #fff;
+
+
+  }
+
+  .list li {
+    list-style-type: none;
+    color: #000;
   }
