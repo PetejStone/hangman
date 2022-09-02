@@ -46,6 +46,7 @@ const Home = () =>  {
 
 
         //if letter doesn't exist in word
+        let exists = correct
         for (let i = 0; i < originalWord.length; i++) {
              
            
@@ -69,11 +70,11 @@ const Home = () =>  {
             
                 let update = [...blank];
                 setBlank(update);
-                let exists = correct + 1;
-                setCorrect(exists)
+                exists = exists += 1
+                
                
                 setGuess('')
-                
+               
                 if (correct === word.length -1) {
                     setTimeout(() => {
                         alert('Congratulations! You Won!')
@@ -85,6 +86,8 @@ const Home = () =>  {
 
             
         }
+        setCorrect(exists)
+        console.log(exists, word.length)
         //reset guess to blank
         setGuess('')
 
