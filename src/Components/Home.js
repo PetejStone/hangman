@@ -25,14 +25,15 @@ const Home = () =>  {
 
          //add guessed letter to guessedLetters Array
          for (let i=0; i < lettersGuessed.length; i++) {
-           if (e.toLowerCase() === lettersGuessed[i]) {
-               alert( `You've already guessed that letter, pick another one!` );
+           if (e === lettersGuessed[i]) {
+                console.log('guess',e,lettersGuessed[i])
+               alert( `You've already guessed that letter, pick another ones!` );
                setGuess('')
                return
            }
          }
          let updateGuessed = [...lettersGuessed];
-         if (!word.includes(e.toLowerCase())) updateGuessed.push(e.toLowerCase());
+         updateGuessed.push(e.toLowerCase());
          setLettersGuessed(updateGuessed)
          
          
