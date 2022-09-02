@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect , Component} from 'react';
 import './Home.css';
+import Keyboard from './Keyboard.js'
+import Stickman from './Stickman.js'
 var randomWords = require('random-words');
 
 let word = randomWords()
@@ -15,11 +17,126 @@ const Home = () =>  {
     const [lettersGuessed, setLettersGuessed] = useState([]);
     const [correct, setCorrect] = useState(0)
   
+    const letterPressed = (e) => {
+       // Set input to the letter pressed
+       let letter = e.toLowerCase();
+      
+       setGuess(letter);
 
-    const closePopup = () => {
-        console.log('hello')
-        document.querySelector('.wrapperParent').classList.remove('active')
+         //add guessed letter to guessedLetters Array
+         for (let i=0; i < lettersGuessed.length; i++) {
+           if (e.toLowerCase() === lettersGuessed[i]) {
+               alert( `You've already guessed that letter, pick another one!` );
+               setGuess('')
+               return
+           }
+         }
+         let updateGuessed = [...lettersGuessed];
+         if (!word.includes(e.toLowerCase())) updateGuessed.push(e.toLowerCase());
+         setLettersGuessed(updateGuessed)
+         
+         
+
+
+       //if letter doesn't exist in word
+       let exists = correct
+       for (let i = 0; i < originalWord.length; i++) {
+            
+          
+           if (!word.includes(e.toLowerCase())) {
+              //decrease guesses by one
+               
+           //     let wrong = lives - 1;
+               
+             
+           //     //If lives are less than or equal to one, alert they lost
+           //     if (lives <= 1) {
+           //         console.log('YOU LOST')
+           //         return alert(`You Lost, the word was "${word}" `)
+           //     }
+           //    setLives(wrong)
+           }
+
+           //if letter exists, show on front end
+           if (originalWord[i] === e.toLowerCase())  {
+               blank[i] = e.toLowerCase();
+           
+               let update = [...blank];
+               setBlank(update);
+               exists = exists += 1
+               
+              
+               setGuess('')
+              
+               if (correct === word.length -1) {
+                   setTimeout(() => {
+                       alert('Congratulations! You Won!')
+
+                   },200)
+                  
+               }
+           } 
+
+           
+       }
+       setCorrect(exists)
+       console.log(exists, word.length)
+       //reset guess to blank
+       setGuess('')
+
+       if (word.includes(e.toLowerCase())) {
+           console.log('true');
+       } else {
+           console.log('zoom in body part', lives);
+           let wrapperParent = document.querySelector('.wrapperParent')
+           wrapperParent.classList.add('active')
+
+           if (lives === 7) {
+               let rope = document.querySelector('.ropeParent')
+               rope.classList.add('zoom')
+           } else if (lives === 6) {
+               let head = document.querySelector('.headParent')
+               head.classList.add('zoom')
+           } else if (lives === 5) {
+               let torso = document.querySelector('.torsoParent')
+               torso.classList.add('zoom')
+           } else if (lives === 4) {
+               let rightarm = document.querySelector('.rightarmParent')
+               rightarm.classList.add('zoom')
+           } else if (lives === 3) {
+               let leftarm = document.querySelector('.leftarmParent')
+               leftarm.classList.add('zoom')
+           } else if (lives === 2) {
+               let rightleg = document.querySelector('.rightlegParent')
+               rightleg.classList.add('zoom')
+           } else if (lives === 1) {
+               let leftleg = document.querySelector('.leftlegParent')
+               leftleg.classList.add('zoom')
+           }
+
+           let wrong = lives - 1;
+               
+             
+           //If lives are less than or equal to one, alert they lost
+           if (lives <= 1) {
+               console.log('YOU LOST')
+               setTimeout(() => {
+                   alert(`You Lost, the word was "${word}" `)
+               },2000)
+               
+           }
+          setLives(wrong)
+           
+
+           // setTimeout(()=> {
+           //     // console.log('timeout',head)
+           //    let head = document.querySelector('.headParent')
+           //     head.classList.remove('zoom')
+           // },1000)
+       }
     }
+
+
     const handleKeyPress = e => {
        
            
@@ -157,22 +274,6 @@ const Home = () =>  {
         }
     }
 
-    // const splitWord = e => {
-        
-    //     let newBlank = word.split('')
-
-    //     // for (let i = 0; i < newBlank.length; i++) {
-    //     //     newBlank[i] = '_ '
-    //     //     return setBlank([newBlank])
-    //     // }
-
-    //     // console.log(blank)
-    //     console.log(newBlank)
-    //     // setBlank(newBlank)
-    // }
-    
-    
-   
       
         if (word.length < 5) newWord();
               let newBlank = word.split('')
@@ -201,40 +302,56 @@ const Home = () =>  {
             <div>
                 
                <p>{blank}</p>
-                <input t
-                ype="text" 
-                onChange={(e) => handleKeyPress(e)} 
-                value = {guess}
-                
-                />
+        
+
+                <div className="keyboard">
+                <div className="rowone">
+              
+                    <button onClick={(e) => letterPressed(e = 'q')}>Q</button>
+                    <button onClick={(e) => letterPressed(e = 'w')}>W</button>
+                    <button onClick={(e) => letterPressed(e = 'e')}>E</button>
+                    <button onClick={(e) => letterPressed(e = 'r')}>R</button>
+                    <button onClick={(e) => letterPressed(e = 't')}>T</button>
+                    <button onClick={(e) => letterPressed(e = 'y')}>Y</button>
+                    <button onClick={(e) => letterPressed(e = 'u')}>U</button>
+                    <button onClick={(e) => letterPressed(e = 'i')}>I</button>
+                    <button onClick={(e) => letterPressed(e = 'o')}>O</button>
+                    <button onClick={(e) => letterPressed(e = 'p')}>P</button>
+                </div>    
+                <div className="rowtwo">
+                    <button onClick={(e) => letterPressed(e = 'a')}>A</button>
+                    <button onClick={(e) => letterPressed(e = 's')}>S</button>
+                    <button onClick={(e) => letterPressed(e = 'd')}>D</button>
+                    <button onClick={(e) => letterPressed(e = 'f')}>F</button>
+                    <button onClick={(e) => letterPressed(e = 'g')}>G</button>
+                    <button onClick={(e) => letterPressed(e = 'h')}>H</button>
+                    <button onClick={(e) => letterPressed(e = 'j')}>J</button>
+                    <button onClick={(e) => letterPressed(e = 'k')}>K</button>
+                    <button onClick={(e) => letterPressed(e = 'l')}>L</button>
+                </div>    
+                <div className="rowthree">
+                    <button onClick={(e) => letterPressed(e = 'z')}>Z</button>
+                    <button onClick={(e) => letterPressed(e = 'x')}>X</button>
+                    <button onClick={(e) => letterPressed(e = 'c')}>C</button>
+                    <button onClick={(e) => letterPressed(e = 'v')}>V</button>
+                    <button onClick={(e) => letterPressed(e = 'b')}>B</button>
+                    <button onClick={(e) => letterPressed(e = 'n')}>N</button>
+                    <button onClick={(e) => letterPressed(e = 'm')}>M</button>
+                </div>    
+          
+            </div>
                 <p>Guesses Left: {lives}</p>
                 <p>Letters Guessed</p>
                 
                 <ul className="list"> {lettersGuessed.map(function(letter){
                     return (<li>{letter}, </li>)
                   })}</ul>
-                  <body>
-                <div className="wrapperParent">
-                    <div class="wrapper">
-                        <div className="headParent"><div class="head"></div></div>
-                        <div className="torsoParent"><div className="torso"></div></div>
-                        <div className="leftarmParent"><div className="leftarm"></div></div>
-                        <div className="rightarmParent"><div className="rightarm"></div></div>
-                        <div className="leftlegParent"> <div className="leftleg"></div></div>
-                    
-                        <div className="rightlegParent"> <div className="rightleg"></div></div>
-
-                        <div className="barone"></div>
-                        <div className="bartwo"></div>
-                        <div className="barthree"></div>
-                        <div className="ropeParent"><div className="rope"></div></div>
-                     </div>
-                     <button id="Continue" onClick={(() => closePopup())}>Guess Again</button>
-                </div>
+            
+                  <Stickman />
 
 
     
-</body>
+
             </div>
             
         )
