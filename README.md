@@ -1,4 +1,5 @@
 A Hangman Game made through React, with animations and live guess feedback.
+
 Connected to a Random Words API with a library of 450k+ English words, for limitless play!
 
 **View Project At**
