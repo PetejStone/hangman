@@ -1,3 +1,10 @@
+A Hangman Game made through React, with animations and live guess feedback.
+
+Connected to a Random Words API with a library of 450k+ English words, for limitless play!
+
+**View Project At**
+https://hangman-io.netlify.app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
